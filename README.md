@@ -15,12 +15,8 @@ There is also an empirical application of the functions on the New York Fulton f
 There is also an R version of the codes: https://github.com/jordanxzz/IVQR-GMM-R-codes.
 
 ## Installation
-1. Install via pip:
-```
-pip install ivqr_gmm
-```
 
-2. Download package and navigate inside the root directory. Run the following code in terminal:
+Download package and navigate inside the root directory. Run the following code in terminal:
 ```
 python setup.py
 ```
