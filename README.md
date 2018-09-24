@@ -30,33 +30,44 @@ python setup.py
 
 ## Explanation
 IVQR_GMM(y, w, z, tau, intercept=False, T=0, abgap=0, bnd = None)
+
 function input :
+
     y         : vector of outcomes
-    w        : (n by k) matrix of the covariate dataset, include exogeneous variables
-    z         : (n by p ) matrix of the instrument variable dataset, include exogeneous variables
-    tau      : quantile index
-    intercept: False ==> The function will NOT add intercept term automatically, include it in w and z if needed
-                    True  ==> The function will ADD intercept term to w and z automatically
-    T        : scalar. If T>0, then T is the time limit specified for early termination
-               of the MIO solver. Otherwise, the MIO solver keeps running until convergence.
-    abgap    : the absolute gap specified for early termination of the MIO solver
-    bnd      : (k by 2) matrix where the first and second columns  
-                  respectively store the lower and upper bounds of the unknown coefficients           
-    The arguments T, abgap and bnd are optional. When they are not specified,
-    the following default values are used.
-    intercept: set intercept=False, the function will NOT add intercept term by itself
-    T            : set T = 0  ==> solve the MIO problem until convergence
-    abgap    : set abgap = 0  ==> solve the MIO problem until convergence
-    bnd        : Calculate the parameter bounds based on the two-stage least square
-                    regression results as used in Chen and Lee (2017)
     
+    w        : (n by k) matrix of the covariate dataset, include exogeneous variables
+    
+    z         : (n by p ) matrix of the instrument variable dataset, include exogeneous variables
+    
+    tau      : quantile index
+    
+    intercept: False ==> The function will NOT add intercept term automatically, include it in w and z if needed
+      
+               True  ==> The function will ADD intercept term to w and z automatically
+               
+    T        : scalar. T=0 by default. If T>0, then T is the time limit specified for early termination
+    
+               of the MIO solver. Otherwise, the MIO solver keeps running until convergence.
+               
+    abgap    : the absolute gap specified for early termination of the MIO solver. abgap=0 by default.
+    
+    bnd      : (k by 2) matrix where the first and second columns respectively store the 
+               
+               lower and upper bounds of the unknown coefficients. No boundary by default.
+                
 function output :
-    theta_hat: the vector of the coefficient estimates
+
+    theta_hat   : the vector of the coefficient estimates
+    
     s_hat       : the estimated asymptotic standard errors
+    
     obj_v       : the value of the GMM objective function
+    
     gap         : the MIO optimization gap value in case of early termination
-    rtime    : the time used by the MIO solver in the estimation procedure
-    ncount   : the number of nodes already explored by the MIO solver 
+    
+    rtime       : the time used by the MIO solver in the estimation procedure
+    
+    ncount      : the number of nodes already explored by the MIO solver 
 
 ## Requirements
 Requires python 3.6 or above and Gurobi solver Python API (available free for academic purposes).
