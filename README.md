@@ -13,3 +13,50 @@ Both the Python function named IVQR_GMM can be used to calculate the GMM estimat
 There is also an empirical application of the functions on the New York Fulton fish market data to test the functions. The data is collected by Kathryn Graddy available at http://people.brandeis.edu/~kgraddy/datasets/fish.out. It consists of 111 observation on the price and quantity of whiting transactions everyday. The dependent variable Y is the logarithm of total amount of whitings sold each day. The endogenous explanatory variable D is the logarithm of the average daily price. The exogenous explanatory variables are the day indicators (Monday, Tuesday, Wednesday and Thursday). The instrumental variables are weather indicators (Stormy and Mixed). The application codes are also appended in the files.
 
 There is also an R version of the codes: https://github.com/jordanxzz/IVQR-GMM-R-codes.
+
+## Installation
+1. Install via pip:
+```
+pip install ivqr_gmm
+```
+
+2. Download package and navigate inside the root directory. Run the following code in terminal:
+```
+python setup.py
+```
+## Main Functions
+- IVQR_GMM:
+  Used to do the instrumental variable quantile regression using the GMM estimator.
+
+## Explanation
+IVQR_GMM(y, w, z, tau, intercept=False, T=0, abgap=0, bnd = None)
+function input :
+    y         : vector of outcomes
+    w        : (n by k) matrix of the covariate dataset, include exogeneous variables
+    z         : (n by p ) matrix of the instrument variable dataset, include exogeneous variables
+    tau      : quantile index
+    intercept: False ==> The function will NOT add intercept term automatically, include it in w and z if needed
+                    True  ==> The function will ADD intercept term to w and z automatically
+    T        : scalar. If T>0, then T is the time limit specified for early termination
+               of the MIO solver. Otherwise, the MIO solver keeps running until convergence.
+    abgap    : the absolute gap specified for early termination of the MIO solver
+    bnd      : (k by 2) matrix where the first and second columns  
+                  respectively store the lower and upper bounds of the unknown coefficients           
+    The arguments T, abgap and bnd are optional. When they are not specified,
+    the following default values are used.
+    intercept: set intercept=False, the function will NOT add intercept term by itself
+    T            : set T = 0  ==> solve the MIO problem until convergence
+    abgap    : set abgap = 0  ==> solve the MIO problem until convergence
+    bnd        : Calculate the parameter bounds based on the two-stage least square
+                    regression results as used in Chen and Lee (2017)
+    
+function output :
+    theta_hat: the vector of the coefficient estimates
+    s_hat       : the estimated asymptotic standard errors
+    obj_v       : the value of the GMM objective function
+    gap         : the MIO optimization gap value in case of early termination
+    rtime    : the time used by the MIO solver in the estimation procedure
+    ncount   : the number of nodes already explored by the MIO solver 
+
+## Requirements
+Requires python 3.6 or above and Gurobi solver Python API (available free for academic purposes).
