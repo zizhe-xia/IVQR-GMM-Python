@@ -67,3 +67,8 @@ function output :
 
 ## Requirements
 Requires python 3.6 or above and Gurobi solver Python API (available free for academic purposes).
+
+## Acknowledgments
+* Le-Yu Chen (lychen@econ.sinica.edu.tw)
+* Sokbae Lee (sl3841@columbia.edu)
+The Python codes in this package are developed based on the Matlab implementation by Le-Yu Chen (https://github.com/LeyuChen/IVQR-GMM-computation-codes).
