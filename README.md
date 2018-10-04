@@ -32,11 +32,11 @@ IVQR_GMM(y, w, z, tau, intercept=False, T=0, abgap=0, bnd = None)
 
 function input :
 
-    y         : vector of outcomes
+    y        : vector of outcomes
     
     w        : (n by k) matrix of the covariate dataset, include exogeneous variables
     
-    z         : (n by p ) matrix of the instrument variable dataset, include exogeneous variables
+    z        : (n by p ) matrix of the instrument variable dataset, include exogeneous variables
     
     tau      : quantile index
     
