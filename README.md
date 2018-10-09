@@ -52,7 +52,7 @@ function input :
     
     bnd      : (k by 2) matrix where the first and second columns respectively store the 
                
-               lower and upper bounds of the unknown coefficients. No boundary by default.
+               lower and upper bounds of the unknown coefficients. No boundary by default (empty array).
                 
 function output :
 
